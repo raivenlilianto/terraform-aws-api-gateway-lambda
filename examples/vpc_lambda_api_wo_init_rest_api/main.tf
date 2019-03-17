@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "this" {
-  source = "../../"
+  source = "../../modules/api-gateway-resource"
 
   lambda_code_bucket = "${local.lambda_code_bucket}"
   lambda_code_path   = "${local.lambda_code_path}"
@@ -25,10 +25,14 @@ module "this" {
 
   rest_api_id   = "${local.rest_api_id}"
   parent_id     = "${local.parent_id}"
-  path_part     = "lockandgetvccdata"
+  path_part     = "releasevccdata"
   http_methods   = [
     "GET",
     "POST"
+  ]
+  http_methods_apikey_required = [
+    "false",
+    "true"
   ]
   stage_name    = "v1"
 }

@@ -1,7 +1,7 @@
 locals {
     lambda_code_bucket = "ast-appbin-112120735838-8bdd3e766153c31a"
     lambda_code_path = "astvcc/staging/8a9bf71-astvcc-test.zip"
-    lambda_name = "astvcc-scheduleGetPoolData"
+    lambda_name = "astvcc-apiGetPoolData"
     lambda_runtime = "java8"
     lambda_handler = "com.traveloka.ast.vcc.lambda.GetPoolData::execute"
     lambda_memory_size = "512"

@@ -99,6 +99,7 @@ resource "aws_api_gateway_method" "api_method" {
   http_method   = "${element(var.http_methods, count.index)}"
   authorization = "${var.authorization}"
   authorizer_id = "${var.authorizer_id}"
+  api_key_required = "${element(var.http_methods_apikey_required, count.index)}" 
 }
 
 resource "aws_api_gateway_method_response" "200" {

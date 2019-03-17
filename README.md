@@ -25,6 +25,9 @@ Module Input Variables
 - `is_vpc_lambda` - True if the lambda resides within VPC. False otherwise.
 - `rest_api_id` - Specified the Rest API id if it is attached to already define Rest API in API Gateway, if not create once Rest API and attached in one module
 - `parent_id` - Specified the Rest API root_resource_id if it is attached to already define Rest API in API Gateway, if not create once Rest API and attached in one module
+- `http_methods` - register the method to implement for invoking the lambda
+- `http_methods_apikey_required` - state clearly api key requirement for the methods
+- `stage_name` - register the state name for deployment
 
 Usage 
 -----

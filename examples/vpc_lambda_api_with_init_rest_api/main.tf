@@ -12,7 +12,7 @@ resource "aws_api_gateway_rest_api" "ast_vcc" {
 }
 
 module "this" {
-  source = "../../"
+  source = "../../modules/api-gateway-resource"
 
   lambda_code_bucket = "${local.lambda_code_bucket}"
   lambda_code_path   = "${local.lambda_code_path}"
@@ -38,6 +38,10 @@ module "this" {
   http_methods   = [
     "GET",
     "POST"
+  ]
+  http_methods_apikey_required = [
+    "false",
+    "true"
   ]
   stage_name    = "v1"
 }

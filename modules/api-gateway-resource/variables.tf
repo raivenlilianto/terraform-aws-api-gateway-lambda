@@ -105,6 +105,11 @@ variable "http_methods" {
   description = "HTTP Methods of resources/path to call API Gateway"
 }
 
+variable "http_methods_apikey_required" {
+  type        = "list"
+  description = "HTTP Methods Api Key Required state of resources/path"
+}
+
 variable "authorization" {
   type        = "string"
   description = "API Gateway authorization type"
