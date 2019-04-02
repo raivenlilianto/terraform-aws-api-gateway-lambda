@@ -20,13 +20,13 @@ output "aws_api_gateway_resource_id" {
 }
 
 output "aws_api_gateway_deployment_id" {
-  value = "${aws_api_gateway_deployment.deployment.id}"
+  value = "${aws_api_gateway_deployment.deployment.*.id}"
 }
 
 output "aws_api_gateway_deployment_invoke_url" {
-  value = "${aws_api_gateway_deployment.deployment.invoke_url}"
+  value = "${aws_api_gateway_deployment.deployment.*.invoke_url}"
 }
 
 output "aws_api_gateway_deployment_execution_arn" {
-  value = "${aws_api_gateway_deployment.deployment.execution_arn}"
+  value = "${aws_api_gateway_deployment.deployment.*.execution_arn}"
 }
