@@ -148,6 +148,8 @@ resource "aws_api_gateway_deployment" "deployment" {
   variables = {
     deployed_at = "${timestamp()}"
   }
+
+  count = "${var.is_deployed == "true" ? 1 : 0}"
 }
 
 resource "aws_lambda_permission" "apigw_lambda" {
@@ -157,5 +159,5 @@ resource "aws_lambda_permission" "apigw_lambda" {
   principal     = "apigateway.amazonaws.com"
 
   # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
-  source_arn = "arn:aws:execute-api:ap-southeast-1:112120735838:${var.rest_api_id}/${aws_api_gateway_deployment.deployment.stage_name}/*"
+  source_arn = "arn:aws:execute-api:ap-southeast-1:${var.account_id}:${var.rest_api_id}/${aws_api_gateway_deployment.deployment.stage_name}/*"
 }

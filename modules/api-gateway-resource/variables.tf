@@ -84,6 +84,11 @@ variable "is_vpc_lambda" {
   default     = "true"
 }
 
+variable "account_id" {
+  type        = "string"
+  description = "AWS Account Id"
+}
+
 variable "rest_api_id" {
   type        = "string"
   description = "Rest Api Id"
@@ -125,4 +130,10 @@ variable "authorizer_id" {
 variable "stage_name" {
   type        = "string"
   description = "The API Gateway Deployment stage"
+}
+
+variable "is_deployed" {
+  type        = "string"
+  description = "Whether deploy the rest api after resource created or not"
+  default     = "true"
 }
