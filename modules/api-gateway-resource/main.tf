@@ -39,6 +39,10 @@ locals {
     ManagedBy     = "Terraform"
   }
 }
+data "aws_s3_bucket_object" "s3_object" {
+  bucket = "${var.lambda_code_bucket}"
+  key    = "${var.lambda_code_path}"
+}
 
 resource "aws_lambda_function" "lambda_classic" {
   s3_bucket     = "${var.lambda_code_bucket}"
@@ -56,7 +60,8 @@ resource "aws_lambda_function" "lambda_classic" {
   environment = {
     variables = "${merge(var.environment_variables, map("ManagedBy", "Terraform"))}"
   }
-
+  
+  source_code_hash = "$data.aws_s3_bucket_object.s3_object.etag}"
   count = "${var.is_vpc_lambda == "true" ? 0 : 1}"
 }
 
@@ -82,6 +87,7 @@ resource "aws_lambda_function" "lambda_vpc" {
     variables = "${merge(var.environment_variables, map("ManagedBy", "Terraform"))}"
   }
 
+  source_code_hash = "$data.aws_s3_bucket_object.s3_object.etag}"
   count = "${var.is_vpc_lambda == "true" ? 1 : 0}"
 }
 
