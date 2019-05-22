@@ -1,8 +1,9 @@
 module "lambda_role" {
-  source = "github.com/traveloka/terraform-aws-iam-role//modules/lambda?ref=v0.4.4"
+  source = "github.com/traveloka/terraform-aws-iam-role//modules/lambda?ref=v1.0.00"
 
   product_domain   = "${var.product_domain}"
   descriptive_name = "${var.lambda_name}"
+  environment      = "${var.environment}"
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_basic_role" {
